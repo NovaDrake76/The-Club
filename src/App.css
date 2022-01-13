@@ -1,38 +1,107 @@
+p {
+  padding: 3px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.top {
+  display: flex;
+  height: 46vh;
+  width: 100%;
+}
+
+.topLeft {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 30vw;
 }
 
-.App-link {
-  color: #61dafb;
+.result {
+  width: auto;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.topMid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  width: 40vw;
+}
+
+.satoko {
+  display: flex;
+}
+
+.overlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topRight {
+  display: flex;
+  width: 30vw;
+}
+
+.cpuHand {
+  display: flex;
+  width: auto;
+}
+
+.bottom {
+  display: flex;
+  height: 54vh;
+  width: 100%;
+}
+
+.bottomLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myHand {
+  display: flex;
+  align-items: center;
+  width: 78vw;
+  overflow-x: auto;
+}
+
+.subtext {
+  margin: 0;
+}
+
+.buttonTitle {
+  margin: 0 0 4px 0;
+}
+
+.bottomRight {
+  display: flex;
+  align-items: center;
+}
+
+.takeCard {
+  border: none;
+  width: auto;
+  background-color: transparent;
+  margin-top: 10px;
+}
+
+.stand {
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
 }
