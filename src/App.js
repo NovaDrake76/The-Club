@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./App.css";
 import cardBack from "./images/cardBack.png";
 import a1 from "./images/1.png";
@@ -35,23 +35,31 @@ function App() {
 
   const [gameWinner, setGameWinner] = useState(satoko1);
 
+  const baralho = useMemo(() => {
+    return [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+      11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6,
+      7, 8, 9, 10, 11, 12, 13,
+    ];
+  }, []);
+
   useEffect(() => {
     let sum = 0;
     for (let num of mao) {
       sum = sum + num;
       setCount(sum);
     }
-  });
+  }, [mao]);
 
   useEffect(() => {
     if (count > 21) setEstourou(true);
     if (CPUcount > 21) setCPUestourou(true);
     if (CPUcount >= 17) setCPUstand(true);
-    if (estourou == true) setStand(true);
-  });
+    if (estourou === true) setStand(true);
+  }, [count, CPUcount, estourou]);
 
   useEffect(() => {
-    if (CPUturn == true && CPUcount < 17) {
+    if (CPUturn === true && CPUcount < 17) {
       setCPUmao((oldArray) => [
         ...oldArray,
         baralho[Math.floor(Math.random() * baralho.length)],
@@ -60,43 +68,46 @@ function App() {
       setCPUturn(false);
       setCPUhandler(false);
     }
-  });
+  }, [CPUturn, CPUcount, baralho]);
 
   useEffect(() => {
-    if (CPUstand == false) {
+    if (CPUstand === false) {
       let CPUsum = 0;
       for (let num of CPUmao) {
         CPUsum = CPUsum + num;
         setCPUcount(CPUsum);
       }
     }
-  });
+  }, [
+    stand,
+    CPUhandler,
+    count,
+    CPUcount,
+    estourou,
+    CPUestourou,
+    CPUmao,
+    CPUstand,
+  ]);
 
   useEffect(() => {
-    if (stand == true && CPUhandler == false) {
+    if (stand === true && CPUhandler === false) {
       setCPUturn(true);
       setCPUhandler(true);
-
-      if (
-        (count > CPUcount && estourou == false) ||
-        (estourou == false && CPUestourou == true)
-      ) {
-        setGameWinner(satoko2);
-      }
-      if (
-        (CPUcount > count && CPUestourou == false) ||
-        (CPUestourou == false && estourou == true)
-      ) {
-        setGameWinner(satoko3);
-      }
     }
-  });
 
-  const baralho = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7,
-    8, 9, 10, 11, 12, 13,
-  ];
+    if (
+      (count > CPUcount && estourou === false) ||
+      (estourou === false && CPUestourou === true)
+    ) {
+      setGameWinner(satoko2);
+    }
+    if (
+      (CPUcount > count && CPUestourou === false) ||
+      (CPUestourou === false && estourou === true)
+    ) {
+      setGameWinner(satoko3);
+    }
+  }, [stand, CPUhandler, count, CPUcount, estourou, CPUestourou]);
 
   const hand = mao.map((e) => {
     const images = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13];
@@ -106,7 +117,7 @@ function App() {
   const CPUhand = CPUmao.map((e) => {
     const images = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13];
 
-    if (stand == true) {
+    if (stand === true) {
       return <img src={images[e - 1]} alt={images[e - 1]} height={100} />;
     } else {
       return <img src={cardBack} alt={images[e - 1]} height={100} />;
@@ -114,15 +125,15 @@ function App() {
   });
 
   function result() {
-    if (stand == true && CPUstand == true) {
+    if (stand === true && CPUstand === true) {
       var winner = "";
-      if (gameWinner == satoko2) {
+      if (gameWinner === satoko2) {
         winner = "You win!";
-      } else if (gameWinner == satoko3) {
+      } else if (gameWinner === satoko3) {
         winner = "Satoko wins!";
       }
 
-      if (CPUcount == count || (CPUestourou == true && estourou == true)) {
+      if (CPUcount === count || (CPUestourou === true && estourou === true)) {
         winner = "It's a tie!";
       }
 
@@ -202,6 +213,24 @@ function App() {
             }}
           >
             Stand
+          </button>
+          <button
+            className="stand"
+            onClick={() => {
+              setCount(0);
+              setEstourou(false);
+              setMao([]);
+              setStand(false);
+              setCPUcount(0);
+              setCPUestourou(false);
+              setCPUmao([]);
+              setCPUstand(false);
+              setCPUturn(false);
+              setCPUhandler(false);
+              setGameWinner(satoko1);
+            }}
+          >
+            Reset
           </button>
         </div>
       </div>
