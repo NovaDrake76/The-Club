@@ -96,14 +96,16 @@ function App() {
     }
 
     if (
-      (count > CPUcount && estourou === false) ||
-      (estourou === false && CPUestourou === true)
+      stand === true &&
+      ((count > CPUcount && estourou === false) ||
+        (estourou === false && CPUestourou === true))
     ) {
       setGameWinner(satoko2);
     }
     if (
-      (CPUcount > count && CPUestourou === false) ||
-      (CPUestourou === false && estourou === true)
+      stand === true &&
+      ((CPUcount > count && CPUestourou === false) ||
+        (CPUestourou === false && estourou === true))
     ) {
       setGameWinner(satoko3);
     }
@@ -146,12 +148,6 @@ function App() {
       );
     }
   }
-
-  // const Satokos = [satoko1, satoko2, satoko3];
-
-  // function gameWinnerImage() {
-  //   return;
-  // }
 
   return (
     <div className="App">
