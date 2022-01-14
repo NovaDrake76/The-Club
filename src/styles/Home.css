@@ -62,6 +62,24 @@ h3 {
   max-width: 55%;
 }
 
+@media only screen and (max-width: 980px) {
+  .mion {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .mion {
+    max-height: 65%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .gameContent {
+    font-size: 8px;
+  }
+}
+
 .gameImage {
   max-width: 100%;
   max-height: 100%;
