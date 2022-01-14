@@ -9,6 +9,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: ubuntu;
 }
 
 .top {
@@ -42,6 +43,9 @@ p {
 
 .satoko {
   display: flex;
+  justify-content: center;
+  max-height: 95%;
+  max-width: 100%;
 }
 
 .overlay {
@@ -54,6 +58,7 @@ p {
 .topRight {
   display: flex;
   width: 30vw;
+  justify-content: flex-end;
 }
 
 .cpuHand {
@@ -80,6 +85,11 @@ p {
   overflow-x: auto;
 }
 
+.handImages {
+  max-height: 80%;
+  max-width: 60%;
+}
+
 .subtext {
   margin: 0;
 }
@@ -101,8 +111,27 @@ p {
   margin-top: 10px;
 }
 
+.cardBackButton {
+  max-width: 80%;
+}
+
 .stand {
   border-radius: 100px;
   width: 60px;
   height: 60px;
+  margin-right: 10px;
+}
+
+.endGame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  margin: 10px 10px 0 0;
+  width: 24%;
+  height: 12%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 6px;
 }
