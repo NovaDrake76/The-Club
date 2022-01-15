@@ -109,6 +109,8 @@ p {
   width: auto;
   background-color: transparent;
   margin-top: 10px;
+  max-height: 90%;
+  max-width: 90%;
 }
 
 .cardBackButton {
