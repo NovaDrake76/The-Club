@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
-import backgr from "../images/backHome.png";
-import mion from "../images/mion.png";
-import satoko from "../images/satokoGame.png";
-import rena from "../images/renaGame.jpg";
-import rika from "../images/rikaGame.png";
+import backgr from "../images/backHome.webp";
+import mion from "../images/mion.webp";
+import satoko from "../images/satokoGame.webp";
+import rena from "../images/renaGame.webp";
+import rika from "../images/rikaGame.webp";
 
 function Home() {
   const [dialogText, setDialogText] = useState(
