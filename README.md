@@ -1,3 +1,5 @@
+att: this game is completly wrong, don't play it.
+
 Welcome to The  Club.
 
 Rules: <br />
